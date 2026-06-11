@@ -1,5 +1,6 @@
 import os
 import utils
+from config import *
 from fastapi import FastAPI, HTTPException
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
@@ -9,16 +10,16 @@ app = FastAPI()
 app.mount("/static", StaticFiles(directory="static"), name="static")
 app.mount("/assets", StaticFiles(directory="assets"), name="assets")
 
-BASE_DIR = "C:\\"
-
 @app.get("/")
 async def draw_gui():
     return FileResponse("index.html", media_type="text/html")
 
 
-@app.get("/api/get_directory_content")
-async def get_directory_content(path: str = BASE_DIR):
+@app.get("/api/get_dir_content")
+async def get_dir_content(path: str = ALLOWED_DIR):
     target_path = os.path.abspath(path)
+    if not target_path.startswith(ALLOWED_DIR):
+        raise HTTPException(status_code=403, detail="Access denied")
 
     if not os.path.exists(target_path) or not os.path.isdir(target_path):
         raise HTTPException(status_code=404, detail="Directory not found")
@@ -41,8 +42,13 @@ async def get_directory_content(path: str = BASE_DIR):
 async def open_file(path: str):
     target_path = os.path.abspath(path)
 
+    if not target_path.startswith(ALLOWED_DIR):
+        raise HTTPException(status_code=403, detail="Access denied")
+
     if not os.path.exists(target_path) or not os.path.isfile(target_path):
         raise HTTPException(status_code=404, detail="File not found")
 
-    media_type = "text/plain" if target_path.endswith(".html") else None
+    ext = os.path.splitext(target_path)[1].lower()
+    media_type = "text/plain" if ext in utils.TEXT_EXTENSIONS else None
+    
     return FileResponse(target_path, media_type=media_type)
