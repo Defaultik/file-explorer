@@ -53,7 +53,7 @@ async function drawItemBox(item) {
 
 async function loadDirectory(path) {
     try {
-        const response = await fetch(`/api/get_directory_content?path=${encodeURIComponent(path)}`);
+        const response = await fetch(`/api/get_dir_content?path=${encodeURIComponent(path)}`);
         if (!response.ok) {
             throw new Error("Directory not found");
         }
