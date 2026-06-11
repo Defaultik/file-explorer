@@ -1,10 +1,13 @@
-function goUp() {
+function prevDir() {
     if (!currentPath) return;
-    const normalized = currentPath.replace(/\\/g, '/');
 
-    if (normalized === BASE_PATH) return;
+    const normalized = currentPath.replace(/\\/g, '/').replace(/\/$/, '');
+    const basePath = BASE_PATH.replace(/\\/g, '/').replace(/\/$/, '');
 
-    const parts = normalized.split('/');
-        parts.pop();
-        loadDirectory(parts.join('/'));
-    }
+    if (normalized === basePath) return;
+
+    const lastSlash = normalized.lastIndexOf('/');
+    if (lastSlash < 0) return;
+
+    loadDirectory(normalized.substring(0, lastSlash));
+}
