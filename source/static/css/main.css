@@ -1,0 +1,134 @@
+::-webkit-scrollbar {
+    width: 10px;
+}
+  
+::-webkit-scrollbar-track {
+    background: #252525;
+}
+  
+::-webkit-scrollbar-thumb {
+    background: #e3e3e3;
+}
+  
+::-webkit-scrollbar-thumb:hover {
+    background: #cccccc;
+}
+
+body {
+    color: whitesmoke;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    background-color: #121212;
+    margin: 0;
+}
+
+#container {
+    min-width: 320px;
+    width: 45%;
+    
+    position: relative;
+    top: 100px;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+.header {
+    position: absolute;
+    top: -50px;
+    left: 0;
+    width: 100%;
+    
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+#back-button {
+    width: 150px;
+    height: 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: #252525;
+    color: white;
+    border-radius: 7px;
+    border: none;
+    cursor: pointer;
+
+    transition: 0.3s;
+
+    font-size: 16px;
+}
+
+#back-button:hover {
+    background-color: #303030;
+    border-radius: 10px;
+}
+
+#current-directory {
+    flex: 1;
+    padding: 0 15px;
+    height: 40px;
+
+    display: flex;
+    align-items: center;
+
+    background-color: #1F1F1F;
+    border-radius: 7px;
+
+    font-size: 16px;
+    color: whitesmoke;
+}
+
+.file-item {
+    position: relative;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    
+    margin-top: 7px;
+
+    background-color: #1F1F1F;
+    border-radius: 10px;
+
+    min-width: 320px;
+    width: 100%;
+
+    min-height: 55px;
+    height: 40px;
+}
+
+.file-item:hover {
+    background-color: #2F2F2F;
+}
+
+.file-icon, .folder-icon {
+    margin: 15px;
+}
+
+.file-name {
+    margin: -5px;
+
+    color: #d4d4d4;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.file-size {
+    position: absolute;
+    right: 1.5%;
+
+    color: #9F9F9F;
+}
+
+.file_manage_button {
+    position: absolute;
+    right: 15px;
+    top: 35%;
+
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    cursor: pointer;
+}

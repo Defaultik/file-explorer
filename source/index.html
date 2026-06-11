@@ -2,92 +2,24 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" type="text/css" href="static/main.css">
+    <link rel="stylesheet" type="text/css" href="static/css/main.css">
+    <script src="static/js/visual.js"></script>
+    <script src="static/js/utils.js"></script>
     <title>File Explorer</title>
 </head>
 
 <body>
     <div id="container">
         <div class="header">
-            <button id='back_button' type='button' onclick='goUp()'>Back</button>
-            <div id="current_directory">/</div>
+            <button id='back-button' type='button' onclick='goUp()'>Back</button>
+            <div id="current-directory">/</div>
         </div>
 
         <div id="file-list"></div>
     </div>
 
     <script>
-        let currentPath = "";
-
-        async function loadDirectory(path) {
-            try {
-                const response = await fetch(`/api/get_directory_content?path=${encodeURIComponent(path)}`);
-                if (!response.ok) {
-                    throw new Error("Directory not found");
-                }
-
-                const data = await response.json();
-
-                currentPath = data.current_path;
-                document.getElementById('current_directory').innerText = currentPath;
-                
-                const container = document.getElementById('file-list');
-                container.innerHTML = '';
-
-                data.items.forEach(item => {
-                    const itemBox = document.createElement('div');
-                    const itemIcon = document.createElement('img');
-                    const itemName = document.createElement('p');
-                    const itemSize = document.createElement('p');
-
-                    itemBox.className = 'file-item';
-
-                    if (item.is_dir) {
-                        itemIcon.src = 'assets/rsz_folder.png';
-                        itemIcon.className = 'folder-icon';
-                    } else {
-                        itemIcon.src = 'assets/rsz_file.png';
-                        itemIcon.className = 'file-icon';
-                    }
-
-                    itemName.innerText = item.name;
-                    itemName.className = "file-link";
-                
-                    itemName.onclick = () => {
-                        if (item.is_dir) {
-                            loadDirectory(item.path);
-                        } else {
-                            window.open(`/api/open_file?path=${encodeURIComponent(item.path)}`, '_blank');
-                        }
-                    };
-
-                    itemSize.innerText = item.is_dir ? '' : `${item.size}`;
-                    itemSize.className = 'file-size';
-
-                    itemBox.appendChild(itemIcon);
-                    itemBox.appendChild(itemName);
-                    itemBox.appendChild(itemSize);
-                    container.appendChild(itemBox);
-                });
-            } catch (e) {
-                alert(e.message);
-            }
-        }
-
         const BASE_PATH = "C:/Users/Defaultik/Documents/GitHub";
-
-        function goUp() {
-            if (!currentPath) return;
-
-            const normalized = currentPath.replace(/\\/g, '/');
-
-            if (normalized === BASE_PATH) return;
-
-            const parts = normalized.split('/');
-            parts.pop();
-            loadDirectory(parts.join('/'));
-        }
-
         loadDirectory(BASE_PATH);
     </script>
 </body>
