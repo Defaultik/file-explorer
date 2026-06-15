@@ -16,6 +16,12 @@ Browse your local filesystem through a minimal, dark-themed web interface — no
 
 ---
 
+## 📸 Preview
+
+> ![alt-text](https://i.imgur.com/EYk5c8y.png)
+
+---
+
 ## ✨ Features
 
 - **Zero-dependency frontend** — pure HTML, CSS and JavaScript, no frameworks
@@ -26,12 +32,6 @@ Browse your local filesystem through a minimal, dark-themed web interface — no
 - **Smart file sizes** — auto-formatted as KB / MB / GB
 - **Security** — all requests are sandboxed to a configurable root directory; directory traversal is blocked at the API level
 - **HTML source viewer** — `.html` files are served as plain text so you see source, not a rendered page
-
----
-
-## 📸 Preview
-
-> ![alt-text](https://i.imgur.com/EYk5c8y.png)
 
 ---
 
