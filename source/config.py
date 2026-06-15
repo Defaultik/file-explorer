@@ -1,0 +1,1 @@
+ALLOWED_DIR = r"C:\Users\Defaultik\Documents\GitHub"
