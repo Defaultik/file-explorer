@@ -66,6 +66,39 @@ body {
     text-overflow: ellipsis;
 }
 
+#column-headers {
+    min-width: 320px;
+    width: 100%;
+    height: 35px;
+
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    margin-bottom: 3px;
+
+    background-color: #1F1F1F;
+    border-radius: 10px;
+}
+
+.col-header {
+    font-size: 13px;
+    font-weight: 600;
+    color: #6A6A6A;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    user-select: none;
+}
+
+.col-header-name {
+    margin-left: 15px;
+}
+
+.col-header-size {
+    position: absolute;
+    right: 1.5%;
+}
+
 .file-item {
     width: 100%;
     min-height: 55px;
