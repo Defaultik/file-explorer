@@ -45,7 +45,7 @@ git clone https://github.com/Defaultik/file-explorer.git
 cd file-explorer
 
 # 2. Set your root directory in config.py
-#    ALLOWED_DIR = r"C:\Users\You\Documents"
+#    ALLOWED_DIR = "/your/path/"
 
 # 3. Run
 uvicorn main:app --reload
@@ -75,7 +75,7 @@ uv sync
 Edit `config.py`:
 
 ```python
-ALLOWED_DIR = r"C:\Users\Defaultik\Documents\GitHub"
+ALLOWED_DIR = "/your/path/"
 ```
 
 This is the **only** directory the server will expose. Any request attempting to navigate outside it returns `403 Forbidden`.
@@ -110,6 +110,7 @@ file-explorer/
 | `GET` | `/` | Serves the UI |
 | `GET` | `/api/get_dir_content?path=...` | Lists directory contents |
 | `GET` | `/api/open_file?path=...` | Serves a file for viewing |
+| `GET` | `/api/config` | Allowed directory |
 
 ---
 
