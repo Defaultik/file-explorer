@@ -10,15 +10,26 @@ app = FastAPI()
 app.mount("/static", StaticFiles(directory="static"), name="static")
 app.mount("/assets", StaticFiles(directory="assets"), name="assets")
 
+_ALLOWED_DIR = os.path.abspath(ALLOWED_DIR)
+
+def _is_safe_path(target: str) -> bool:
+    return target == _ALLOWED_DIR or target.startswith(_ALLOWED_DIR + os.sep)
+
+
 @app.get("/")
 async def draw_gui():
     return FileResponse("index.html", media_type="text/html")
 
 
+@app.get("/api/config")
+async def get_config():
+    return {"base_path": ALLOWED_DIR}
+
+
 @app.get("/api/get_dir_content")
-async def get_dir_content(path: str = ALLOWED_DIR):
-    target_path = os.path.abspath(path)
-    if not target_path.startswith(ALLOWED_DIR):
+async def get_dir_content(path: str):
+    target_path = os.path.abspath(path if path else _ALLOWED_DIR)
+    if not _is_safe_path(target_path):
         raise HTTPException(status_code=403, detail="Access denied")
 
     if not os.path.exists(target_path) or not os.path.isdir(target_path):
@@ -41,8 +52,7 @@ async def get_dir_content(path: str = ALLOWED_DIR):
 @app.get("/api/open_file")
 async def open_file(path: str):
     target_path = os.path.abspath(path)
-
-    if not target_path.startswith(ALLOWED_DIR):
+    if not _is_safe_path(target_path):
         raise HTTPException(status_code=403, detail="Access denied")
 
     if not os.path.exists(target_path) or not os.path.isfile(target_path):
