@@ -10,7 +10,7 @@
 ![uv](https://img.shields.io/badge/uv-0.22-DE5FE9?style=flat-square&logo=astral&logoColor=white)
 ![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)
 
-Browse your local filesystem through a minimal, dark-themed web interface — no Electron, no npm, no bloat.
+Browse your server filesystem through a minimal, dark-themed web interface — no Electron, no npm, no bloat.
 
 </div>
 
