@@ -11,7 +11,7 @@
 <body>
     <div id="container">
         <div class="header">
-            <button id='back-button' type='button' onclick='prevDir()'>Back</button>
+            <button id="back-button" type="button" onclick="prevDir()">Back</button>
             <div id="current-directory">/</div>
         </div>
 
@@ -24,8 +24,13 @@
     </div>
 
     <script>
-        const BASE_PATH = "C:/Users/Defaultik/Documents/GitHub";
-        loadDirectory(BASE_PATH);
+        let BASE_PATH = "";
+        fetch("/api/config")
+            .then(r => r.json())
+            .then(data => {
+                BASE_PATH = data.base_path;
+                loadDirectory(BASE_PATH);
+            });
     </script>
 </body>
 </html>
