@@ -23,7 +23,7 @@ async def draw_gui():
 
 @app.get("/api/config")
 async def get_config():
-    return {"base_path": ALLOWED_DIR}
+    return {"base_path": os.path.normpath(_ALLOWED_DIR)}
 
 
 @app.get("/api/get_dir_content")
