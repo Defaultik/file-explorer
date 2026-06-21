@@ -115,7 +115,7 @@ body {
     background-color: #2F2F2F;
 }
 
-.file-icon, .folder-icon {
+.file-icon {
     margin: 15px;
     flex-shrink: 0;
 }
