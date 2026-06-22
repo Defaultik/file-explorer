@@ -21,7 +21,7 @@ body {
 
 .header {
     position: absolute;
-    top: -50px;
+    top: -46px;
     width: 100%;
     display: flex;
     align-items: center;
@@ -102,6 +102,7 @@ body {
 }
 
 .file-icon,
+#back-button img,
 #copy-button img {
     width: 18px;
     height: 18px;
