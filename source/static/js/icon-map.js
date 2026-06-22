@@ -37,6 +37,7 @@ const ICON_MAP = {
     // Programming Languages
     "py":     ICONS.code,
     "pyw":    ICONS.code,
+    "pyc":    ICONS.code,
     "js":     ICONS.code,
     "ts":     ICONS.code,
     "java":   ICONS.code,
