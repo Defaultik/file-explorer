@@ -1,4 +1,4 @@
-const ICON_BASE = "assets/file_extensions/resized/";
+const ICON_BASE = "assets/icons/files/";
 
 const ICONS = {
     picture:     ICON_BASE + "picture.png",

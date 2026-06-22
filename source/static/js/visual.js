@@ -5,9 +5,9 @@ function drawItemIcon(item) {
     const extension = item.name.split(".").pop().toLowerCase();
 
     if (item.is_dir) {
-        icon.src = "assets/file_extensions/resized/folder.png";
+        icon.src = "assets/icons/files/folder.png";
     } else {
-        icon.src = ICON_MAP[extension] ?? "assets/file_extensions/resized/file.png";
+        icon.src = ICON_MAP[extension] ?? "assets/icons/files/file.png";
     }
     
     icon.className = "file-icon";
@@ -53,6 +53,23 @@ async function drawItemBox(item) {
     return itemBox;
 }
 
+function updateCurrentDirectory(path) {
+    const currentDirectory = document.getElementById("current-directory");
+    currentDirectory.innerText = path;
+
+    if (currentDirectory.scrollWidth <= currentDirectory.clientWidth) return;
+
+    const sep = path.includes("\\") ? "\\" : "/";
+    const parts = path.split(/[\\/]/);
+
+    for (let i = 1; i < parts.length; i++) {
+        currentDirectory.innerText = "..." + sep + parts.slice(i).join(sep);
+        if (currentDirectory.scrollWidth <= currentDirectory.clientWidth) return;
+    }
+
+    currentDirectory.innerText = "..." + sep + parts[parts.length - 1];
+}
+
 async function loadDirectory(path) {
     try {
         const response = await fetch(`/api/get_dir_content?path=${encodeURIComponent(path)}`);
@@ -63,7 +80,7 @@ async function loadDirectory(path) {
         const data = await response.json();
 
         currentPath = data.current_path;
-        document.getElementById("current-directory").innerText = currentPath;
+        updateCurrentDirectory(currentPath);
 
         const container = document.getElementById("file-list");
         container.innerHTML = "";
