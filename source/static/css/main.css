@@ -65,6 +65,54 @@ body {
     text-overflow: ellipsis;
 }
 
+@keyframes copyFlash {
+    0%   { background-color: #252525; }
+    20%  { background-color: #1a3a1e; }
+    100% { background-color: #252525; }
+}
+
+@keyframes copyIconFlash {
+    0%   { filter: invert(1); }
+    15%  { filter: invert(60%) sepia(40%) saturate(400%) hue-rotate(90deg); }
+    85%  { filter: invert(60%) sepia(40%) saturate(400%) hue-rotate(90deg); }
+    100% { filter: invert(1); }
+}
+
+#copy-button {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #252525;
+    border-radius: 7px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s, border-radius 0.3s;
+}
+
+#copy-button:hover {
+    background-color: #303030;
+    border-radius: 10px;
+}
+
+#copy-button.copied {
+    animation: copyFlash 0.5s ease-in-out;
+}
+
+.file-icon,
+#copy-button img {
+    width: 18px;
+    height: 18px;
+    display: block;
+    filter: invert(1);
+}
+
+#copy-button.copied img {
+    animation: copyIconFlash 0.5s ease-in-out;
+}
+
 #column-headers {
     width: 100%;
     height: 35px;
