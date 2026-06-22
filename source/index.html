@@ -3,24 +3,40 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" type="text/css" href="static/css/main.css">
-    <script src="static/js/visual.js"></script>
     <script src="static/js/utils.js"></script>
+    <script src="static/js/icon-map.js"></script>
+    <script src="static/js/visual.js"></script>
     <title>File Explorer</title>
 </head>
 
 <body>
     <div id="container">
         <div class="header">
-            <button id='back-button' type='button' onclick='prevDir()'>Back</button>
+            <button id="back-button" type="button" onclick="prevDir()">
+                <img src="assets/icons/back.png" alt="Back" />
+            </button>
             <div id="current-directory">/</div>
+            <button id="copy-button" type="button" onclick="copyCurrentPath()">
+                <img src="assets/icons/copy.png" alt="Copy" />
+            </button>
+        </div>
+
+        <div id="column-headers">
+            <span class="col-header col-header-name">Name</span>
+            <span class="col-header col-header-size">Size</span>
         </div>
 
         <div id="file-list"></div>
     </div>
 
     <script>
-        const BASE_PATH = "C:/Users/Defaultik/Documents/GitHub";
-        loadDirectory(BASE_PATH);
+        let BASE_PATH = "";
+        fetch("/api/config")
+            .then(r => r.json())
+            .then(data => {
+                BASE_PATH = data.base_path;
+                loadDirectory(BASE_PATH);
+            });
     </script>
 </body>
 </html>

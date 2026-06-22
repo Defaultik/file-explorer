@@ -11,3 +11,15 @@ function prevDir() {
 
     loadDirectory(normalized.substring(0, lastSlash));
 }
+
+function copyCurrentPath() {
+    if (!currentPath) return;
+    navigator.clipboard.writeText(currentPath);
+
+    const btn = document.getElementById('copy-button');
+    btn.classList.remove('copied');
+    void btn.offsetWidth;
+    btn.classList.add('copied');
+
+    btn.addEventListener('animationend', () => btn.classList.remove('copied'), { once: true });
+}
