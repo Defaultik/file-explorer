@@ -21,13 +21,37 @@
             </button>
         </div>
 
-        <div id="column-headers">
-            <span class="col-header col-header-name">Name</span>
-            <span class="col-header col-header-size">Size</span>
+        <div id="file-box">
+            <div id="column-headers">
+                <span class="col-header col-header-name">Name</span>
+                <span class="col-header col-header-size">Size</span>
+            </div>
+            <div id="file-list"></div>
         </div>
 
-        <div id="file-list"></div>
+        <div id="scroll-progress-track">
+            <div id="scroll-progress-bar"></div>
+        </div>
     </div>
+
+    <script>
+        function updateScrollProgress() {
+            const box = document.getElementById('file-box');
+            const track = document.getElementById('scroll-progress-track');
+            const bar = document.getElementById('scroll-progress-bar');
+            const scrollable = box.scrollHeight - box.clientHeight;
+
+            if (scrollable <= 0) {
+                track.style.opacity = '0';
+                return;
+            }
+
+            track.style.opacity = '1';
+            bar.style.width = (box.scrollTop / scrollable * 100) + '%';
+        }
+
+        document.getElementById('file-box').addEventListener('scroll', updateScrollProgress);
+    </script>
 
     <script>
         let BASE_PATH = "";
