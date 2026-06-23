@@ -89,6 +89,9 @@ async function loadDirectory(path) {
             const itemBox = await drawItemBox(item);
             container.appendChild(itemBox);
         }
+        
+        document.getElementById('file-box').scrollTop = 0;
+        updateScrollProgress();
     } catch (e) {
         alert(e.message);
     }
