@@ -122,17 +122,6 @@ file-explorer/
 
 ---
 
-## 🗺️ Roadmap
-
-- [ ] Search / filter files by name
-- [ ] File type icons per extension
-- [ ] Breadcrumb navigation bar
-- [ ] Image thumbnail preview
-- [ ] Drag-and-drop upload support
-- [ ] Auth layer (Basic / token)
-
----
-
 ## 🤝 Contributing
 
 Pull requests are welcome! For major changes, please open an issue first to discuss what you'd like to change.
