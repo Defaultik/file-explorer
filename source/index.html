@@ -15,9 +15,16 @@
             <button id="back-button" type="button" onclick="prevDir()">
                 <img src="assets/icons/back.png" alt="Back" />
             </button>
-            <div id="current-directory">/</div>
+            <div id="path-search-container">
+                <div id="current-directory">/</div>
+                <input id="search-input" type="text" placeholder="Search..."
+                       oninput="filterFiles(this.value)" />
+            </div>
             <button id="copy-button" type="button" onclick="copyCurrentPath()">
                 <img src="assets/icons/copy.png" alt="Copy" />
+            </button>
+            <button id="search-button" type="button" onclick="toggleSearch()">
+                <img src="assets/icons/search.png" alt="Search" />
             </button>
         </div>
 
