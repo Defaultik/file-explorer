@@ -49,6 +49,7 @@ async def get_dir_content(path: str):
 
     return {"current_path": target_path, "items": items}
 
+
 @app.get("/api/open_file")
 async def open_file(path: str):
     target_path = os.path.abspath(path)
