@@ -1,8 +1,8 @@
 :root {
     /* Colors */
     --c-bg-main: #121212;
-    --c-bg-panel: #0F0F0F;
-    --c-bg-element: #1F1F1F;
+    --c-bg-panel: #141414;
+    --c-bg-element: #1a1a1a;
     --c-bg-element-hover: #2F2F2F;
     --c-bg-btn: #252525;
     --c-bg-btn-hover: #3A3A3A;
