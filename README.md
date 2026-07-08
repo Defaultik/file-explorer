@@ -18,7 +18,7 @@ Browse your server filesystem through a minimal, dark-themed web interface — n
 
 ## 📸 Preview
 
-> ![alt-text](https://i.imgur.com/EYk5c8y.png)
+> ![alt-text](https://i.imgur.com/XYYCdss.png)
 
 ---
 
