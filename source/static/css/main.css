@@ -64,11 +64,11 @@ body {
     max-height: calc(94vh - 50px);
     overflow-y: auto;
     padding: 0 8px 8px;
-    scrollbar-width: none; /* Firefox */
+    scrollbar-width: none;
 }
 
 #file-box::-webkit-scrollbar {
-    display: none; /* Chrome, Safari */
+    display: none;
 }
 
 #file-list {
@@ -88,7 +88,8 @@ body {
 }
 
 #back-button,
-#copy-button {
+#copy-button,
+#search-button {
     height: var(--btn-size);
     flex-shrink: 0;
     display: flex;
@@ -108,19 +109,28 @@ body {
     font-size: 16px;
 }
 
-#copy-button {
+#copy-button,
+#search-button {
     width: var(--btn-size);
 }
 
 #back-button:hover,
-#copy-button:hover {
+#copy-button:hover,
+#search-button:hover {
     background-color: var(--c-bg-btn-hover);
     border-radius: var(--radius-md);
 }
 
-#current-directory {
+/* Контейнер кроссфейда пути/поиска */
+#path-search-container {
     flex: 1;
+    position: relative;
     height: var(--btn-size);
+}
+
+#current-directory {
+    position: absolute;
+    inset: 0;
     display: flex;
     align-items: center;
     padding-inline: 10px;
@@ -130,6 +140,35 @@ body {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+    transition: opacity var(--trans-std);
+}
+
+#search-input {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    box-sizing: border-box;
+    padding-inline: 10px;
+    background-color: var(--c-bg-element);
+    border-radius: var(--radius-sm);
+    border: none;
+    outline: none;
+    font-family: var(--font-family);
+    font-size: 16px;
+    color: var(--c-text-main);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--trans-std);
+}
+
+#search-input::placeholder {
+    color: var(--c-text-muted);
+}
+
+/* Активное состояние кнопки поиска */
+#search-button.active,
+#search-button.active:hover {
+    background-color: var(--c-bg-success);
 }
 
 /*
@@ -137,7 +176,8 @@ body {
 */
 .file-icon,
 #back-button img,
-#copy-button img {
+#copy-button img,
+#search-button img {
     width: var(--icon-size);
     height: var(--icon-size);
     display: block;

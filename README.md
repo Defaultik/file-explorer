@@ -27,11 +27,8 @@ Browse your server filesystem through a minimal, dark-themed web interface — n
 - **Zero-dependency frontend** — pure HTML, CSS and JavaScript, no frameworks
 - **FastAPI backend** — fast, async, and easy to extend
 - **Dark UI** — easy on the eyes, smooth hover transitions
-- **Directory navigation** — click into folders, go back up with one button
 - **File preview** — open files in a new tab directly from the browser
-- **Smart file sizes** — auto-formatted as KB / MB / GB
 - **Security** — all requests are sandboxed to a configurable root directory; directory traversal is blocked at the API level
-- **HTML source viewer** — `.html` files are served as plain text so you see source, not a rendered page
 
 ---
 

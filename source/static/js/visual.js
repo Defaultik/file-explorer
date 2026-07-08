@@ -71,6 +71,7 @@ function updateCurrentDirectory(path) {
 }
 
 async function loadDirectory(path) {
+    if (searchActive) toggleSearch();
     try {
         const response = await fetch(`/api/get_dir_content?path=${encodeURIComponent(path)}`);
         if (!response.ok) {
