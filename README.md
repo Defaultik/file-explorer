@@ -1,8 +1,6 @@
 <div align="center">
 
-# File Explorer
-
-**A clean, self-hosted web file explorer built with FastAPI + Vanilla JS**
+<img src="https://i.imgur.com/eWbWbmQ.png" alt="Logo Banner" />
 
 ![Python](https://img.shields.io/badge/Python-3.14%2B-3776AB?style=flat-square&logo=python&logoColor=white)
 ![FastAPI](https://img.shields.io/badge/FastAPI-0.136-009688?style=flat-square&logo=fastapi&logoColor=white)
@@ -10,6 +8,7 @@
 ![uv](https://img.shields.io/badge/uv-0.22-DE5FE9?style=flat-square&logo=astral&logoColor=white)
 ![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)
 
+**A clean, self-hosted web file explorer built with FastAPI + Vanilla JS**
 Browse your server filesystem through a minimal, dark-themed web interface — no Electron, no npm, no bloat.
 
 </div>
